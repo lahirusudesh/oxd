@@ -2930,7 +2930,7 @@ export const oxdLockWithKeyhole: icon = {
   value: `<svg width="15" height="20" viewBox="0 0 15 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path style="fill:currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M14.2251 13.6151C14.2249 12.3575 14.2216 11.0999 14.2265 9.84229C14.228 9.46146 14.11 9.12696 13.8904 8.82293C13.6244 8.45452 13.3267 8.35078 12.893 8.46494C10.5399 9.08431 8.15221 9.31836 5.72016 9.16922C4.21273 9.07677 2.73474 8.83927 1.27945 8.44907C0.972207 8.3667 0.723783 8.44004 0.497363 8.63974C0.119885 8.97266 -0.000329018 9.40664 3.33786e-06 9.89243C0.00185442 12.599 -7.62939e-05 15.3056 0.00131845 18.0122C0.00180817 18.9622 0.538721 19.4944 1.49623 19.4946C5.24246 19.4956 8.98869 19.4957 12.7349 19.4946C13.7267 19.4942 14.2238 18.9908 14.2247 17.9894C14.226 16.5495 14.225 15.1097 14.2251 13.6151ZM8.09848 16.8087C8.21818 16.8069 8.33695 16.744 8.46987 16.6923C8.47137 16.4805 8.48673 16.2793 8.4419 16.0925C8.2933 15.4733 8.1288 14.8576 7.95793 14.2441C7.8969 14.0249 7.93787 13.8711 8.11243 13.7149C8.53823 13.3339 8.7049 12.8539 8.57662 12.287C8.43676 11.6689 7.90485 11.1994 7.31198 11.1246C6.48668 11.0204 5.93204 11.5438 5.71751 12.0268C5.45474 12.6183 5.61893 13.3003 6.12648 13.7326C6.28861 13.8707 6.32936 14.0136 6.27574 14.2122C6.08844 14.9062 5.90335 15.6008 5.7292 16.2982C5.63545 16.6736 5.74347 16.808 6.13203 16.8118C6.78748 16.8181 7.44312 16.8186 8.09848 16.8087Z"/>
 <path style="fill:currentColor" d="M10.234 5.32701C10.2331 5.98654 10.2281 6.6461 10.2337 7.30557C10.2354 7.5024 10.2664 7.69898 10.3204 7.91257C10.9992 7.7919 11.6798 7.67977 12.3543 7.53858C12.4295 7.52284 12.5193 7.34173 12.519 7.23755C12.5166 6.38174 12.5395 5.52223 12.4684 4.67104C12.3461 3.20541 11.6654 2.00576 10.4976 1.12282C8.89034 -0.0922751 7.10519 -0.329674 5.25679 0.453842C3.55619 1.1747 2.46774 2.49186 2.20024 4.33183C2.0535 5.34118 2.15116 6.38627 2.14283 7.41528C2.14136 7.59759 2.27226 7.65902 2.42968 7.68709C2.94985 7.77982 3.46879 7.87981 3.98985 7.96715C4.32421 8.02319 4.3742 7.97765 4.37564 7.63217C4.37921 6.77531 4.3559 5.91775 4.3824 5.06168C4.4375 3.28195 6.22827 1.89954 8.07536 2.3986C9.39355 2.75476 10.2728 3.92715 10.234 5.32701Z"/>
-</svg>`
+</svg>`,
 };
 
 export const oxdSplit: icon = {
@@ -2939,7 +2939,7 @@ export const oxdSplit: icon = {
 <path d="M7 17.168H4.6C3.8 17.168 3 16.168 3 15.168V5.16797C3 4.16797 3.8 3.16797 4.6 3.16797H7" style="stroke:currentColor;fill:none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M13 3.16797H15.4C16.2 3.16797 17 4.16797 17 5.16797V15.168C17 16.168 16.2 17.168 15.4 17.168H13" style="stroke:currentColor;fill:none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M10 3.33398V16.6673" style="stroke:currentColor;fill:none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>`
+</svg>`,
 };
 
 export const oxdCompactExpand: icon = {
@@ -2949,7 +2949,7 @@ export const oxdCompactExpand: icon = {
 <path d="M14.25 0.75L9 6" style="stroke:currentColor;fill:none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M0.75 14.25L6 9" style="stroke:currentColor;fill:none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M5.25 14.25H0.75V9.75" style="stroke:currentColor;fill:none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>`
+</svg>`,
 };
 
 export const oxdSwitch: icon = {
@@ -2959,14 +2959,24 @@ export const oxdSwitch: icon = {
 <path d="M1.33325 4.29688H14.6666" style="stroke:currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M11.3333 14.6662L14.6666 11.7032L11.3333 8.74023" style="stroke:currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M14.6666 11.7031H1.33325" style="stroke:currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>`
+</svg>`,
 };
 
 export const oxdLightning: icon = {
   name: 'oxd-lightning',
   value: `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M11.2514 0.0678058C11.4524 0.184724 11.5463 0.424795 11.4779 0.647058L9.67699 6.50002H13C13.1995 6.50002 13.3799 6.61858 13.459 6.8017C13.5381 6.98482 13.5008 7.19744 13.3641 7.3427L5.36411 15.8427C5.20473 16.012 4.94964 16.0491 4.74863 15.9322C4.54761 15.8153 4.45373 15.5752 4.52212 15.353L6.32303 9.50002H3.00001C2.80053 9.50002 2.62014 9.38145 2.54102 9.19833C2.4619 9.01522 2.4992 8.80259 2.63591 8.65733L10.6359 0.157333C10.7953 -0.0120074 11.0504 -0.049112 11.2514 0.0678058ZM4.15722 8.50002H7.00001C7.15868 8.50002 7.30794 8.57533 7.40221 8.70296C7.49647 8.8306 7.52456 8.9954 7.4779 9.14706L6.11074 13.5903L11.8428 7.50002H9.00001C8.84134 7.50002 8.69208 7.4247 8.59782 7.29707C8.50355 7.16943 8.47546 7.00463 8.52212 6.85297L9.88928 2.40971L4.15722 8.50002Z" style="fill:currentColor"/>
-</svg>`
+</svg>`,
+};
+
+export const oxdStarRate: icon = {
+  name: 'oxd-star-rate',
+  value: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="none"><path style="fill:currentColor" d="m384-334 96-74 96 74-36-122 90-64H518l-38-124-38 124H330l90 64-36 122ZM233-120l93-304L80-600h304l96-320 96 320h304L634-424l93 304-247-188-247 188Zm247-369Z"/></svg>`,
+};
+
+export const oxdShortText: icon = {
+  name: 'oxd-short-text',
+  value: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="none"><path style="fill:currentColor" d="M160-360v-80h400v80H160Zm0-160v-80h640v80H160Z"/></svg>`,
 };
 
 const icons: Icons = {
@@ -3285,6 +3295,8 @@ const icons: Icons = {
   'oxd-switch': oxdSwitch,
   'oxd-compact-expand': oxdCompactExpand,
   'oxd-lightning': oxdLightning,
+  'oxd-star-rate': oxdStarRate,
+  'oxd-short-text': oxdShortText,
 };
 
 export default icons;
