@@ -1,3 +1,5 @@
+2026-06-08 - 92d9945afeafe424ec39dbe3471ac4696c2d491b - components/src/core/components/Icon/icons.ts - Add oxd-twitter-x icon
+
 2026-06-08 - 1e66c232a409a40b0ab6f607fee0bf7388073800 - components/src/core/components/Icon/icons.ts - Add oxd-csv icon and update oxd-xlsx icon
 
 2026-05-25 - 0fa5c01eb2414a047ac7f54effdd54ec7469ef8c - components/src/core/components/Icon/icons.ts - Add oxd-record-edit and oxd-round-off icons
