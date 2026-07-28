@@ -3027,6 +3027,26 @@ export const oxdPayStructure: icon = {
 </svg>`,
 }
 
+export const oxdNoEmployeesFound: icon = {
+  name: 'oxd-no-employees-found',
+  value: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<circle style="fill:none;stroke:currentColor" cx="10" cy="8" r="4"/>
+<path style="fill:none;stroke:currentColor" d="M3 20c0-3.5 3.3-5.5 7-5.5"/>
+<circle style="fill:none;stroke:currentColor" cx="17" cy="17" r="3.5"/>
+<line style="fill:none;stroke:currentColor" x1="21.5" y1="21.5" x2="19.6" y2="19.6"/>
+</svg>`,
+};
+
+export const oxdDocumentText4: icon = {
+  name: 'oxd-document-text-4',
+  value: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+<path style="fill:none;stroke:currentColor" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+<polyline style="fill:none;stroke:currentColor" points="14 3 14 8 19 8"/>
+<line style="fill:none;stroke:currentColor" x1="9" y1="13" x2="15" y2="13"/>
+<line style="fill:none;stroke:currentColor" x1="9" y1="17" x2="13" y2="17"/>
+</svg>`,
+};
+
 const icons: Icons = {
   'oxd-likes': oxdLikes,
   'oxd-birthday': oxdBirthday,
@@ -3351,6 +3371,8 @@ const icons: Icons = {
   'oxd-record-edit': oxdRecordEdit,
   'oxd-round-off': oxdRoundOff,
   'oxd-pay-structure': oxdPayStructure,
+  'oxd-no-employees-found': oxdNoEmployeesFound,
+  'oxd-document-text-4': oxdDocumentText4,
 };
 
 export default icons;
