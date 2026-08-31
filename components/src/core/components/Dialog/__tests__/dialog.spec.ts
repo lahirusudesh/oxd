@@ -43,4 +43,23 @@ describe('Dialog > Dialog.vue', () => {
     });
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  it('puts dialog semantics on the element that receives $attrs', () => {
+    const wrapper = mount(Dialog, {
+      props: {},
+      attrs: {'aria-labelledby': 'dialog-title'},
+    });
+    const dialog = wrapper.find('[role="dialog"]');
+    expect(dialog.exists()).toBe(true);
+    expect(dialog.attributes('aria-modal')).toBe('true');
+    // the whole point: consumer naming has to land on the dialog itself,
+    // not on a sibling where it silently does nothing
+    expect(dialog.attributes('aria-labelledby')).toBe('dialog-title');
+  });
+
+  it('exposes exactly one dialog and no stray document role', () => {
+    const wrapper = mount(Dialog, {props: {}});
+    expect(wrapper.findAll('[role="dialog"]')).toHaveLength(1);
+    expect(wrapper.findAll('[role="document"]')).toHaveLength(0);
+  });
 });
