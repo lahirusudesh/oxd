@@ -5,7 +5,7 @@
     :hint="hint"
     :hintPlacement="hintPlacement"
     :hintStyle="hintStyle"
-    :id="id"
+    :id="resolvedId"
     :message="message"
     class="oxd-input-field-bottom-space"
     :classes="classes"
@@ -13,7 +13,7 @@
     <component
       :is="component"
       v-bind="$attrs"
-      :id="id"
+      :id="resolvedId"
       :disabled="disabled"
       :hasError="hasError"
       :modelValue="modelValue"
@@ -56,6 +56,7 @@ import {
 } from './types';
 import useField from '../../../composables/useField';
 import translateMixin from '../../../mixins/translate';
+import {uuid} from '../../../mixins/uuid';
 import CheckboxGroup from '@orangehrm/oxd/core/components/Input/CheckboxGroup.vue';
 import RadioPillGroup from '@orangehrm/oxd/core/components/Input/RadioPills/RadioPillGroup.vue';
 import TreeSelectInput from '@orangehrm/oxd/core/components/Input/TreeSelect/TreeSelect.vue';
@@ -92,7 +93,7 @@ export default defineComponent({
     'oxd-number-input': Number,
   },
 
-  mixins: [translateMixin],
+  mixins: [translateMixin, uuid],
   emits: ['update:modelValue'],
 
   props: {
@@ -199,6 +200,11 @@ export default defineComponent({
   },
 
   computed: {
+    // A label binds to its control only through id/for. When the consumer
+    // omits id, generate a stable per-instance one. WCAG 1.3.1/3.3.2/4.1.2.
+    resolvedId(): string {
+      return this.id || `oxd-input-field-${this.cid}`;
+    },
     classes(): object {
       return {
         label: {

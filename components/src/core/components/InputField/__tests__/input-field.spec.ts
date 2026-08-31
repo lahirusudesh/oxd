@@ -244,4 +244,31 @@ describe('InputField.vue', () => {
       'font-style: bold;',
     );
   });
+
+  const mountField = (props: Record<string, unknown>) =>
+    mount(InputField, {
+      props,
+      global: {provide: {[formKey as symbol]: mockFormAPI}},
+    });
+
+  it('associates the label with its control when no id is passed', () => {
+    const wrapper = mountField({label: 'First Name'});
+    const id = wrapper.find('input').attributes('id');
+    expect(id).toBeTruthy();
+    expect(wrapper.find('label').attributes('for')).toBe(id);
+  });
+
+  it('uses a consumer supplied id verbatim', () => {
+    const wrapper = mountField({label: 'First Name', id: 'first-name'});
+    expect(wrapper.find('input').attributes('id')).toBe('first-name');
+    expect(wrapper.find('label').attributes('for')).toBe('first-name');
+  });
+
+  it('generates a distinct id per instance', () => {
+    const first = mountField({label: 'First Name'});
+    const second = mountField({label: 'Last Name'});
+    expect(first.find('input').attributes('id')).not.toBe(
+      second.find('input').attributes('id'),
+    );
+  });
 });
