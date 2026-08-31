@@ -35,8 +35,15 @@
       />
       <oxd-icon
         name="calendar"
+        role="button"
         :class="dateIconClasses"
+        :tabindex="isIconInteractive ? 0 : -1"
+        :aria-label="t('general.open_calendar', 'Open calendar')"
+        :aria-expanded="open ? 'true' : 'false'"
+        :aria-disabled="isIconInteractive ? null : 'true'"
         @click="toggleDropdown"
+        @keydown.enter.prevent="toggleDropdown"
+        @keydown.space.prevent="toggleDropdown"
       />
     </div>
     <transition name="transition-fade-down">
@@ -194,6 +201,16 @@ export default defineComponent({
         '--disabled': this.disabled,
         '--readonly': this.readonly,
       };
+    },
+    // The calendar trigger is an <i> with a click handler: without role and
+    // tabindex it is neither announced nor reachable from the keyboard, and
+    // role="button" is what makes Space an expected activation key.
+    // WCAG 2.1.1 / 4.1.2.
+    //
+    // Mirrors the guard in toggleDropdown: when the trigger cannot open the
+    // calendar it must not be a tab stop either.
+    isIconInteractive(): boolean {
+      return !this.disabled && !this.readonly;
     },
   },
 

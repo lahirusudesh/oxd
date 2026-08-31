@@ -95,4 +95,43 @@ describe('DateInput.vue', () => {
       '2021-12-01 - 2021-12-31',
     );
   });
+
+  it('exposes the calendar trigger as a named, focusable button', () => {
+    const wrapper = mount(DateInput);
+    const trigger = wrapper.get('.oxd-date-input-icon');
+    expect(trigger.attributes('role')).toBe('button');
+    expect(trigger.attributes('aria-label')).toBe('Open calendar');
+    expect(trigger.attributes('tabindex')).toBe('0');
+    expect(trigger.attributes('aria-expanded')).toBe('false');
+  });
+
+  it('opens the calendar from the keyboard', async () => {
+    const wrapper = mount(DateInput);
+    const trigger = wrapper.get('.oxd-date-input-icon');
+
+    await trigger.trigger('keydown.enter');
+    expect(wrapper.emitted('dateselect:opened')).toBeTruthy();
+    expect(trigger.attributes('aria-expanded')).toBe('true');
+  });
+
+  it('opens the calendar with the space key', async () => {
+    const wrapper = mount(DateInput);
+    await wrapper.get('.oxd-date-input-icon').trigger('keydown.space');
+    expect(wrapper.emitted('dateselect:opened')).toBeTruthy();
+  });
+
+  it('drops the trigger out of the tab order when it cannot be used', () => {
+    const disabled = mount(DateInput, {props: {disabled: true}});
+    expect(disabled.get('.oxd-date-input-icon').attributes('tabindex')).toBe(
+      '-1',
+    );
+    expect(
+      disabled.get('.oxd-date-input-icon').attributes('aria-disabled'),
+    ).toBe('true');
+
+    const readonly = mount(DateInput, {props: {readonly: true}});
+    expect(readonly.get('.oxd-date-input-icon').attributes('tabindex')).toBe(
+      '-1',
+    );
+  });
 });
