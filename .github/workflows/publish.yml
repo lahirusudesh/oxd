@@ -57,7 +57,7 @@ jobs:
           (cat package.json | jq '.peerDependencies += {"vue": "3.x"}' | jq 'del(.private, .scripts, .dependencies.vue, .devDependencies)') > dist/package.json
 
       - name: Upload build files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: oxd-build
           path: dist
