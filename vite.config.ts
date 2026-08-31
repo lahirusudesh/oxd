@@ -16,6 +16,11 @@ export default defineConfig((conf) => {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
     },
+    test: {
+      setupFiles: [
+        fileURLToPath(new URL('./src/__tests__/setup.ts', import.meta.url)),
+      ],
+    },
     css: {
       preprocessorOptions: {
         scss: {
