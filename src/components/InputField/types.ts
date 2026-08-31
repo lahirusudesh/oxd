@@ -61,6 +61,16 @@ export const TYPES = [
   TYPE_COLOR,
 ];
 
+// Types whose component renders a labelable form control as its root, so a
+// <label for> can point straight at it. The rest render a wrapper <div> and
+// need naming applied inside the component itself.
+export const LABELABLE_TYPES = [
+  TYPE_INPUT,
+  TYPE_FILE_INPUT,
+  TYPE_TEXTAREA,
+  TYPE_PASSWORD,
+];
+
 export const TYPE_MAP: TypeMap = {
   [TYPE_INPUT]: COMPONENT_INPUT,
   [TYPE_FILE_INPUT]: COMPONENT_FILE_INPUT,

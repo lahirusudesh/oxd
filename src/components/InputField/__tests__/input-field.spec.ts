@@ -105,4 +105,48 @@ describe('InputField.vue', () => {
     });
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  const mountField = (props: Record<string, unknown>) =>
+    mount(InputField, {
+      props: {modelValue: null, ...props},
+      global: {provide: {[formKey as symbol]: mockFormAPI}},
+    });
+
+  it('associates the label with its control when no id is passed', () => {
+    const wrapper = mountField({label: 'First Name'});
+    const id = wrapper.get('input').attributes('id');
+    expect(id).toBeTruthy();
+    expect(wrapper.get('label').attributes('for')).toBe(id);
+  });
+
+  it('uses a consumer supplied id verbatim', () => {
+    const wrapper = mountField({label: 'First Name', id: 'first-name'});
+    expect(wrapper.get('input').attributes('id')).toBe('first-name');
+    expect(wrapper.get('label').attributes('for')).toBe('first-name');
+  });
+
+  it('generates a distinct id per instance', () => {
+    const first = mountField({label: 'First Name'});
+    const second = mountField({label: 'Last Name'});
+    expect(first.get('input').attributes('id')).not.toBe(
+      second.get('input').attributes('id'),
+    );
+  });
+
+  it('associates the label for every labelable type', () => {
+    ['input', 'password', 'textarea', 'file'].forEach((type) => {
+      const wrapper = mountField({label: 'Field', type});
+      const control = wrapper.get(type === 'textarea' ? 'textarea' : 'input');
+      expect(wrapper.get('label').attributes('for')).toBe(
+        control.attributes('id'),
+      );
+    });
+  });
+
+  it('does not point `for` at a wrapper that is not a form control', () => {
+    // a `for` resolving to a <div> leaves the control unnamed and adds an
+    // orphaned-label failure on top; those types need naming of their own
+    const wrapper = mountField({label: 'Choose', type: 'select', options: []});
+    expect(wrapper.get('label').attributes('for')).toBeUndefined();
+  });
 });

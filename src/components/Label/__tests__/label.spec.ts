@@ -35,4 +35,16 @@ describe('Label.vue', () => {
     });
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  it('binds the label to its control through `for`', () => {
+    const wrapper = mount(Label, {
+      props: {label: 'First Name', id: 'first-name'},
+    });
+    expect(wrapper.get('label').attributes('for')).toBe('first-name');
+  });
+
+  it('omits `for` when there is no control to point at', () => {
+    const wrapper = mount(Label, {props: {label: 'First Name'}});
+    expect(wrapper.get('label').attributes('for')).toBeUndefined();
+  });
 });

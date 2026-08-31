@@ -28,7 +28,7 @@
           :name="labelIcon"
           class="oxd-input-group__label-icon"
         />
-        <oxd-label v-if="label" :label="label" :class="labelClasses" />
+        <oxd-label v-if="label" :id="id" :label="label" :class="labelClasses" />
       </div>
     </slot>
     <div :class="wrapperClasses">
@@ -59,6 +59,13 @@ export default defineComponent({
 
   props: {
     label: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    // Forwarded to the label as its `for`, binding it to the control the
+    // group wraps. Omit it and the pair is never associated. WCAG 1.3.1.
+    id: {
       type: String,
       required: false,
       default: null,

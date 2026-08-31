@@ -20,7 +20,7 @@
 -->
 
 <template>
-  <label :class="classes">
+  <label :for="id" :class="classes">
     {{ label }}
   </label>
 </template>
@@ -33,6 +33,14 @@ export default {
     label: {
       type: String,
       required: true,
+    },
+    // Id of the control this label names. A label binds to its control only
+    // through for/id, so without it the control has no accessible name.
+    // WCAG 1.3.1 / 3.3.2 / 4.1.2.
+    id: {
+      type: String,
+      required: false,
+      default: null,
     },
   },
 

@@ -21,6 +21,7 @@
 
 <template>
   <oxd-input-group
+    :id="labelFor"
     :label="label"
     :classes="classes"
     :label-icon="labelIcon"
@@ -30,6 +31,7 @@
     <component
       :is="component"
       v-bind="$attrs"
+      :id="resolvedId"
       :disabled="disabled"
       :has-error="hasError"
       :model-value="modelValue"
@@ -46,9 +48,10 @@
 import useField from '@/composables/useField';
 import type {PropType} from 'vue';
 import {toRef, nextTick, defineComponent} from 'vue';
+import {uuid} from '@/mixins/uuid';
 import Input from '@/components/Input/Input.vue';
 import type {Types, Components} from './types';
-import {TYPES, TYPE_INPUT, TYPE_MAP} from './types';
+import {TYPES, TYPE_INPUT, TYPE_MAP, LABELABLE_TYPES} from './types';
 import FileInput from '@/components/Input/FileInput.vue';
 import DateInput from '@/components/Input/DateInput.vue';
 import RadioInput from '@/components/Input/RadioInput.vue';
@@ -83,6 +86,8 @@ export default defineComponent({
     'oxd-autocomplete-input': AutocompleteInput,
   },
 
+  mixins: [uuid],
+
   inheritAttrs: false,
 
   props: {
@@ -96,6 +101,13 @@ export default defineComponent({
       default: null,
     },
     labelIcon: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    // Optional. When omitted a stable per-instance id is generated, because
+    // id/for is the only thing binding the label to the control.
+    id: {
       type: String,
       required: false,
       default: null,
@@ -173,6 +185,21 @@ export default defineComponent({
     },
     component(): Components {
       return TYPE_MAP[this.type as Types];
+    },
+    // A label binds to its control only through id/for. When the consumer
+    // omits id, generate a stable per-instance one so the pair still
+    // associates. WCAG 1.3.1 / 3.3.2 / 4.1.2.
+    resolvedId(): string {
+      return this.id || `oxd-input-field-${this.cid}`;
+    },
+    // Only hand the id to the label when the rendered control is a labelable
+    // element. The remaining types render a wrapper <div> as their root, and
+    // a `for` pointing at a non-form element is an error in its own right —
+    // those need per-component naming, tracked separately.
+    labelFor(): string | undefined {
+      return LABELABLE_TYPES.indexOf(this.type as Types) !== -1
+        ? this.resolvedId
+        : undefined;
     },
   },
 });
