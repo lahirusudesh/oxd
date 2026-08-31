@@ -20,14 +20,32 @@
 -->
 
 <template>
-  <button class="oxd-dialog-close-button">×</button>
+  <button
+    class="oxd-dialog-close-button"
+    type="button"
+    :aria-label="t('general.close', 'Close')"
+  >
+    <span aria-hidden="true">×</span>
+  </button>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue';
+import usei18n from '@/composables/usei18n';
 
+/**
+ * The visible label is a bare "×", which assistive technology announces as
+ * "multiplication sign" or skips entirely. aria-label gives the control a real
+ * name; aria-hidden keeps the glyph from being read twice. WCAG 4.1.2.
+ */
 export default defineComponent({
   name: 'OxdDialogCloseButton',
+
+  setup() {
+    return {
+      ...usei18n(),
+    };
+  },
 });
 </script>
 

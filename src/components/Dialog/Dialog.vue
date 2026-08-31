@@ -21,17 +21,14 @@
 
 <template>
   <transition :name="computedTransition" appear>
-    <oxd-overlay role="dialog" centered :show="true" @click="onClickOverlay">
-      <!--
-    :aria-labelledby="'dialogTitle_' + id"
-    :aria-describedby="'dialogDesc_' + id"
-    -->
+    <oxd-overlay centered :show="true" @click="onClickOverlay">
       <component :is="dialogContainer">
         <oxd-sheet
           :class="classes"
           :gutters="false"
           v-bind="$attrs"
-          role="document"
+          role="dialog"
+          aria-modal="true"
           @click="onClickSheet"
         >
           <oxd-dialog-close-button
@@ -55,6 +52,12 @@ import CloseButton from '@/components/Dialog/CloseButton.vue';
 // Containers
 import DefaultContainer from '@/components/Dialog/Container/Default.vue';
 
+/**
+ * role="dialog" sits on the sheet, which is the element that receives $attrs.
+ * While it lived on the overlay, a consumer's aria-labelledby /
+ * aria-describedby landed on the role="document" sheet instead and silently
+ * did nothing. WCAG 1.3.1 / 2.4.3 / 4.1.2.
+ */
 export default defineComponent({
   name: 'OxdDialog',
 

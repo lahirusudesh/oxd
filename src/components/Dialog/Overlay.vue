@@ -20,7 +20,7 @@
 -->
 
 <template>
-  <div role="dialog" :class="classes">
+  <div :class="classes">
     <slot></slot>
   </div>
 </template>
@@ -28,6 +28,13 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
 
+/**
+ * The overlay is a backdrop, so it carries no role. It holds none of the
+ * dialog's content and never receives the consumer's naming attributes, so
+ * the role="dialog" it used to hardcode only added a second, empty dialog to
+ * the tree — and one on every non-dialog backdrop too, such as the layout's.
+ * The element that owns the content declares the role instead.
+ */
 export default defineComponent({
   name: 'OxdOverlay',
 
