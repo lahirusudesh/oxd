@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`CalendarController.vue > renders OXD CalendarController 1`] = `
-"<div class=\\"oxd-calendar-header\\"><button class=\\"oxd-icon-button\\" type=\\"button\\" data-v-3b1778bd=\\"\\"><i class=\\"oxd-icon bi-chevron-left\\" data-v-85cde8ca=\\"\\" data-v-3b1778bd=\\"\\"></i></button>
+"<div class=\\"oxd-calendar-header\\"><button class=\\"oxd-icon-button\\" type=\\"button\\" data-v-3b1778bd=\\"\\"><i class=\\"oxd-icon bi-chevron-left\\" aria-hidden=\\"true\\" data-v-85cde8ca=\\"\\" data-v-3b1778bd=\\"\\"></i></button>
   <ul class=\\"oxd-calendar-selector\\">
     <li class=\\"oxd-calendar-selector-month\\" data-v-75916442=\\"\\">
       <div class=\\"oxd-calendar-selector-month-selected\\">
@@ -19,6 +19,6 @@ exports[`CalendarController.vue > renders OXD CalendarController 1`] = `
         <!--v-if-->
       </transition-stub>
     </li>
-  </ul><button class=\\"oxd-icon-button\\" type=\\"button\\" data-v-3b1778bd=\\"\\"><i class=\\"oxd-icon bi-chevron-right\\" data-v-85cde8ca=\\"\\" data-v-3b1778bd=\\"\\"></i></button>
+  </ul><button class=\\"oxd-icon-button\\" type=\\"button\\" data-v-3b1778bd=\\"\\"><i class=\\"oxd-icon bi-chevron-right\\" aria-hidden=\\"true\\" data-v-85cde8ca=\\"\\" data-v-3b1778bd=\\"\\"></i></button>
 </div>"
 `;

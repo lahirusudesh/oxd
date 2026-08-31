@@ -24,16 +24,24 @@
     v-if="withContainer"
     :disabled="disabled"
     :class="classes"
+    :aria-label="ariaLabel"
     type="button"
     @click="onClick"
   >
-    <oxd-icon :class="{'--disabled': disabled}" :name="name" :type="iconType" />
+    <oxd-icon
+      :class="{'--disabled': disabled}"
+      :name="name"
+      :type="iconType"
+      aria-hidden="true"
+    />
   </button>
   <oxd-icon
     v-else
     :name="name"
     :type="iconType"
     :class="{'oxd-icon-button__icon': true, '--disabled': disabled}"
+    :aria-label="ariaLabel"
+    :role="ariaLabel ? 'img' : null"
     @click="onClick"
   />
 </template>
@@ -56,6 +64,16 @@ export default defineComponent({
     name: {
       type: String,
       required: true,
+    },
+    // The button holds only an icon, which renders as an empty <i> with no
+    // text node — so without this it has no accessible name and announces as
+    // just "button". Declared as a prop rather than left to attribute
+    // fallthrough so precedence across the v-if/v-else pair is deterministic.
+    // WCAG 4.1.2.
+    ariaLabel: {
+      type: String,
+      required: false,
+      default: null,
     },
     withContainer: {
       type: Boolean,

@@ -35,4 +35,33 @@ describe('Button > Icon.vue', () => {
     });
     expect(wrapper.html()).toMatchSnapshot();
   });
+
+  it('exposes an accessible name and hides the decorative glyph', () => {
+    const wrapper = mount(IconButton, {
+      props: {name: 'trash', ariaLabel: 'Delete record'},
+    });
+    expect(wrapper.get('button').attributes('aria-label')).toBe(
+      'Delete record',
+    );
+    // the icon carries no text node, so it must not be announced alongside
+    // the name it is standing in for
+    expect(wrapper.get('i').attributes('aria-hidden')).toBe('true');
+  });
+
+  it('keeps its name while disabled', () => {
+    const wrapper = mount(IconButton, {
+      props: {name: 'trash', ariaLabel: 'Delete record', disabled: true},
+    });
+    expect(wrapper.get('button').attributes('aria-label')).toBe(
+      'Delete record',
+    );
+  });
+
+  it('names the container-less icon and marks it as an image', () => {
+    const wrapper = mount(IconButton, {
+      props: {name: 'trash', ariaLabel: 'Delete record', withContainer: false},
+    });
+    expect(wrapper.get('i').attributes('aria-label')).toBe('Delete record');
+    expect(wrapper.get('i').attributes('role')).toBe('img');
+  });
 });
