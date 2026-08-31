@@ -26,11 +26,15 @@
       <div
         class="oxd-date-input-icon-wrapper"
         tabindex="0"
+        role="button"
+        :aria-label="$vt('Open calendar')"
+        :aria-expanded="open ? 'true' : 'false'"
         :class="dateIconAttributeClasses"
         v-if="!disabled"
         ref="oxdIcon"
         @click="toggleDropdown"
         @keyup.enter.prevent.stop="toggleDropdown"
+        @keydown.space.prevent="toggleDropdown"
       >
         <oxd-icon :class="dateIconClasses" name="oxd-calendar" size="small" />
       </div>

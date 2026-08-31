@@ -243,4 +243,30 @@ describe('DateInput.vue', () => {
     expect(wrapper.find('.oxd-date-input-links').exists()).toBeFalsy();
     expect(wrapper.find('#actions').exists()).toBeTruthy();
   });
+
+  it('exposes the calendar trigger as a named button', () => {
+    const wrapper = mount(DateInput, {});
+    const trigger = wrapper.find('.oxd-date-input-icon-wrapper');
+    expect(trigger.attributes('role')).toBe('button');
+    expect(trigger.attributes('aria-label')).toBe('Open calendar');
+    expect(trigger.attributes('aria-expanded')).toBe('false');
+    expect(trigger.attributes('tabindex')).toBe('0');
+  });
+
+  it('reflects the calendar open state on the trigger', async () => {
+    const wrapper = mount(DateInput, {});
+    await wrapper.find('.oxd-date-input-icon-wrapper').trigger('click');
+    expect(
+      wrapper.find('.oxd-date-input-icon-wrapper').attributes('aria-expanded'),
+    ).toBe('true');
+  });
+
+  it('opens the calendar with the space key', async () => {
+    // role="button" implies space activation
+    const wrapper = mount(DateInput, {});
+    await wrapper.find('.oxd-date-input-icon-wrapper').trigger('keydown.space');
+    expect(
+      wrapper.find('.oxd-date-input-icon-wrapper').attributes('aria-expanded'),
+    ).toBe('true');
+  });
 });
