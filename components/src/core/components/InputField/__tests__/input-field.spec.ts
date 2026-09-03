@@ -271,4 +271,38 @@ describe('InputField.vue', () => {
       second.find('input').attributes('id'),
     );
   });
+
+  it.each(['checkboxgroup', 'radiogroup', 'radiopillgroup'])(
+    'names a %s group without orphaning the label',
+    type => {
+      // `name` is required by radiopillgroup; harmless for the others
+      const wrapper = mountField({
+        label: 'Job Titles',
+        type,
+        options: [],
+        name: 'job-titles',
+      });
+      const label = wrapper.find('label');
+
+      // each member owns `${id}_${option.id}`, so nothing owns the field id —
+      // a `for` here would point at no element at all
+      expect(label.attributes('for')).toBeUndefined();
+
+      // the group is named by pointing at the label instead
+      const group = wrapper.find('[role="group"]');
+      expect(group.exists()).toBe(true);
+      expect(group.attributes('aria-labelledby')).toBe(
+        label.attributes('id'),
+      );
+      expect(label.attributes('id')).toBeTruthy();
+    },
+  );
+
+  it('does not apply group semantics to a single control', () => {
+    const wrapper = mountField({label: 'First Name', type: 'input'});
+    expect(wrapper.find('[role="group"]').exists()).toBe(false);
+    expect(wrapper.find('label').attributes('for')).toBe(
+      wrapper.find('input').attributes('id'),
+    );
+  });
 });
