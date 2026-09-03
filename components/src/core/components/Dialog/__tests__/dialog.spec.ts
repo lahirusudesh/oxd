@@ -62,4 +62,12 @@ describe('Dialog > Dialog.vue', () => {
     expect(wrapper.findAll('[role="dialog"]')).toHaveLength(1);
     expect(wrapper.findAll('[role="document"]')).toHaveLength(0);
   });
+
+  it('names the close button it renders internally', () => {
+    // consumers cannot reach this button, so the library has to name it
+    const wrapper = mount(Dialog, {props: {withClose: true}});
+    expect(
+      wrapper.find('.oxd-dialog-close-button').attributes('aria-label'),
+    ).toBe('Close');
+  });
 });
