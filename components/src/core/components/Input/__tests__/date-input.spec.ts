@@ -269,4 +269,13 @@ describe('DateInput.vue', () => {
       wrapper.find('.oxd-date-input-icon-wrapper').attributes('aria-expanded'),
     ).toBe('true');
   });
+
+  it('does not offer a read-only calendar trigger as an operable control', () => {
+    // toggleDropdown refuses to act when readonly, so announcing an enabled
+    // button and keeping it in the tab order advertises an inoperable control
+    const wrapper = mount(DateInput, {props: {readonly: true}});
+    const trigger = wrapper.find('.oxd-date-input-icon-wrapper');
+    expect(trigger.attributes('tabindex')).toBe('-1');
+    expect(trigger.attributes('aria-disabled')).toBe('true');
+  });
 });
